@@ -1,0 +1,31 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - spacy>=3.0.6
+  - pandas=1.*
+  - numpy=1.*
+  - pip
+  - pip:
+      - azure-ai-ml~=1.0
+      - azureml-core~=1.0
+      - azureml-mlflow~=1.45
+      - mlflow
+      - azure-ai-textanalytics~=5.2
+      - tqdm>=4.60.0
+      - haikunator>=2.1.0
+      - scikit_learn
+      - presidio_analyzer
+      - presidio_anonymizer
+      - presidio_evaluator
+      - requests>=2.25.1
+      - xmltodict>=0.12.0
+      - python-dotenv
+      - plotly
+      - kaleido
+      - xmltodict==0.13.0
+      - transformers
+      - torchvision~=0.15.2
+      - https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.6.0/en_core_web_sm-3.6.0-py3-none-any.whl
+      - https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.6.0/en_core_web_md-3.6.0-py3-none-any.whl
+      - https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.6.0/en_core_web_lg-3.6.0-py3-none-any.whl
