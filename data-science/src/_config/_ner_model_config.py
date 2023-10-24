@@ -1,3 +1,8 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+
+
 PRESIDIO_CONFIGURATION = {
     'DATASET_TO_PRESIDIO_MAPPING': {"DATE": "DATE_TIME",
                                     "DOCTOR": "PERSON",

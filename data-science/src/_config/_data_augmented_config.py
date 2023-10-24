@@ -1,3 +1,8 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+
+
 # Mapping between the dataset entities and the Faker provider names
 DATASET_TO_FAKER ={"PERSON":"name",
 "LOCATION":"address",
