@@ -1,14 +1,28 @@
-# Project
+# E2E PII evaluation in AzureML demo
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+Welcome to the e2e Presidio evaluation toolkit. This project seamlessly integrates with Presidio, providing a streamlined end-to-end pipeline for generating sample data from the original dataset and evaluating PII detection of different off-the-shelf models (such as Presidio and Azure Document Intelligence) in both the original and generated datasets. This project uses Azure Machine Learning to track and manage different versions of the data and is orchestrated by a Github Action pipeline.
 
-As the maintainer of this project, please make a few updates:
+# Project structure
+This accelerator provides a modular end-to-end approach for evaluating different PII detection models. The project directory structure is as follows:
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+- `data_samples/sample_set1`: Contains the sample input data for the project.
+  - `input_samples.json`: The sample input data file.
+- `data-science/`: Data science code and defined python environment for PII evaluation 
+  - `evironment/`: Predefined conda environment file used for project
+  - `src/`: python source code for the project.
+    -`_config`:
+    -`addition_reg`:
+    -`data_generator`:
+    -`experiment_tracking/`:
+- `mlops/`: all the yml file (CLI v2) to orchestrate evaluation process
+  - `components/`: this is the component directory which contains the 
+  - `data/`: predefined dataset in yml file
+  - `environments/`: 
+  - `evaluation_pipeline.yml`: the defined machine learning pipeline in yaml file
+- `README.md`: This file.
+
+# Get started
+This project is supported to run in both local and Azure ML environment. All pipelines are orchestrated by GitHub Action. Follow the walkthrough [here](docs/setup_walkthrough.md) for detailed instructions.
 
 ## Contributing
 
