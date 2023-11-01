@@ -9,9 +9,6 @@ __pycache__/
 # C extensions
 *.so
 
-# Data file
-/data/
-
 # mlflow output
 mlruns/
 
