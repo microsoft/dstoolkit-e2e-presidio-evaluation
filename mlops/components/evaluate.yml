@@ -1,0 +1,23 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: data_augementation
+display_name: Data Augmentation
+description: Generate more samples from original data
+version: 0.0.1
+inputs:
+  raw_data:
+    type: uri_folder
+    description: Raw data
+  number_samples:
+    type: number
+outputs:
+  output_path:
+    type: uri_folder
+code: ../../data-science/src
+environment: azureml:presidio-eval-env@latest
+command: >-
+  python augment_samples.py
+  --raw-data ${{inputs.raw_data}}
+  --number-samples ${{inputs.number_samples}}
+  --output-path ${{outputs.output_path}}

@@ -1,0 +1,25 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: Analyze outputs
+display_name: Analyze outputs
+description: Analyze PII detection results for different models
+version: 0.0.1
+inputs:
+  presidio_evaluation_output:
+    type: uri_folder
+  stanford_aimi_evaluation_output:
+    type: uri_folder
+  bert_deib_evaluation_output:
+    type: uri_folder
+outputs:
+  evaluation_outputs:
+    type: uri_folder
+code: ../../data-science/src
+environment: azureml:presidio-eval-env@latest
+command: >-
+  python analyze_eval_results.py
+  --presidio-output ${{inputs.presidio_evaluation_output}}
+  --stanford-output ${{inputs.stanford_aimi_evaluation_output}}
+  --bert-deid-output ${{inputs.bert_deib_evaluation_output}}
+  --final-output-path ${{outputs.evaluation_outputs}}
