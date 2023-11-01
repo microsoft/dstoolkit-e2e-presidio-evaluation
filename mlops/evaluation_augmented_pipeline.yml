@@ -1,0 +1,87 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+experiment_name: i2b2-presidio-evaluation
+description: Pipeline to evaluate PII detection on i2b2 dataset
+
+settings:
+  default_datastore: azureml:workspaceblobstore
+  default_compute: azureml:cpu-cluster
+  continue_on_step_failure: false
+
+inputs:
+  raw_data:
+    type: uri_folder
+    mode: ro_mount
+    path: "azureml:i2b2-augmented-data@latest"
+    #path: ../data/i2b2/2014/testing-PHI-Gold-fixed
+  raw_file_name: augmented_samples.json
+  presidio_experiment_name: Presidio
+  StanfordAIMI_experiment_name: StanfordAIMI
+  bert_deib_experiment_name: BertDEID
+  beta_value: 2.0
+  
+
+outputs:
+  pipeline_job_prep_data:
+    mode: rw_mount
+  pipeline_job_presidio:
+    mode: rw_mount
+  pipeline_job_stanford_aimi:
+    mode: rw_mount
+  pipeline_job_bert_deib:
+    mode: rw_mount
+  pipeline_job_analyze_outputs:
+    mode: rw_mount
+
+jobs:
+  # prep_data:
+  #   type: command
+  #   component: file:./components/prep.yml
+  #   inputs:
+  #     raw_data: ${{parent.inputs.raw_data}}
+  #   outputs:
+  #     transformed_data: ${{parent.outputs.pipeline_job_prep_data}}
+
+  evaluation_presidio:
+    type: command
+    component: file:./components/evaluate.yml
+    inputs:
+      raw_data: ${{parent.inputs.raw_data}}
+      raw_file_name: ${{parent.inputs.raw_file_name}}
+      experiment_name: ${{parent.inputs.presidio_experiment_name}}
+      beta_value: ${{parent.inputs.beta_value}}
+    outputs:
+      evaluation_output: ${{parent.outputs.pipeline_job_presidio}}
+
+  evaluation_stanford_aimi:
+    type: command
+    component: file:./components/evaluate.yml
+    inputs:
+      raw_data: ${{parent.inputs.raw_data}}
+      raw_file_name: ${{parent.inputs.raw_file_name}}
+      experiment_name: ${{parent.inputs.StanfordAIMI_experiment_name}}
+      beta_value: ${{parent.inputs.beta_value}}
+    outputs:
+      evaluation_output: ${{parent.outputs.pipeline_job_stanford_aimi}}
+
+  evaluation_bert_deib:
+    type: command
+    component: file:./components/evaluate.yml
+    inputs:
+      raw_data: ${{parent.inputs.raw_data}}
+      raw_file_name: ${{parent.inputs.raw_file_name}}
+      experiment_name: ${{parent.inputs.bert_deib_experiment_name}}
+      beta_value: ${{parent.inputs.beta_value}}
+    outputs:
+      evaluation_output: ${{parent.outputs.pipeline_job_bert_deib}}
+
+  analyze_outputs:
+    type: command
+    component: file:./components/analyze_outputs.yml
+    inputs:
+      presidio_evaluation_output: ${{parent.jobs.evaluation_presidio.outputs.evaluation_output}}
+      stanford_aimi_evaluation_output: ${{parent.jobs.evaluation_stanford_aimi.outputs.evaluation_output}}
+      bert_deib_evaluation_output: ${{parent.jobs.evaluation_bert_deib.outputs.evaluation_output}}
+    outputs:
+      evaluation_outputs: ${{parent.outputs.pipeline_job_analyze_outputs}}
+      
