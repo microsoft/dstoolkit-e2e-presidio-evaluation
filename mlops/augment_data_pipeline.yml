@@ -1,0 +1,32 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+experiment_name: i2b2-data-augmentation
+description: Generate augmented samples from original i2b2 data
+
+settings:
+  default_datastore: azureml:workspaceblobstore
+  default_compute: azureml:cpu-cluster
+  continue_on_step_failure: false
+
+inputs:
+  raw_data:
+    type: uri_folder
+    mode: ro_mount
+    path: "azureml:evaluation-data@latest"
+    #path: ../data/i2b2/2014/testing-PHI-Gold-fixed
+  number_samples: 10
+  
+outputs:
+  pipeline_job_augmented_data:
+    mode: rw_mount
+    name: i2b2-augmented-data
+
+jobs:
+  augemente_data:
+    type: command
+    component: file:./components/augement_data.yml
+    inputs:
+      raw_data: ${{parent.inputs.raw_data}}
+      number_samples: ${{parent.inputs.number_samples}}
+    outputs:
+      output_path: ${{parent.outputs.pipeline_job_augmented_data}}
