@@ -1,6 +1,8 @@
 # E2E PII evaluation in AzureML demo
 
-Welcome to the e2e Presidio evaluation toolkit. This project seamlessly integrates with Presidio, providing a streamlined end-to-end pipeline for generating sample data from the original dataset and evaluating PII detection of different off-the-shelf models (such as Presidio and Azure Document Intelligence) in both the original and generated datasets. This project uses Azure Machine Learning to track and manage different versions of the data and is orchestrated by a Github Action pipeline.
+Welcome to the e2e Presidio evaluation toolkit. This project seamlessly integrates with Presidio, providing a streamlined end-to-end pipeline for generating sample data from the original dataset and evaluating PII detection of different off-the-shelf models (such as Presidio and Azure Languages Service) in both the original and generated datasets. This project uses Azure Machine Learning to track and manage different versions of the data and is orchestrated by a Github Action pipeline.
+
+![architecture](/docs/images/e2e%20evaluation%20architecture%20diagram.png)
 
 # Project structure
 This accelerator provides a modular end-to-end approach for evaluating different PII detection models. The project directory structure is as follows:
@@ -10,9 +12,9 @@ This accelerator provides a modular end-to-end approach for evaluating different
 - `data-science/`: Data science code and defined python environment for PII evaluation 
   - `evironment/`: Predefined conda environment file used for project
   - `src/`: python source code for the project.
-    -`_config`:
-    -`addition_reg`:
-    -`data_generator`:
+    -`_config/`: configuration files 
+    -`addition_reg/`: 
+    -`data_generator/`: 
     -`experiment_tracking/`:
 - `mlops/`: all the yml file (CLI v2) to orchestrate evaluation process
   - `components/`: this is the component directory which contains the 
