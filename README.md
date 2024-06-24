@@ -3,6 +3,7 @@
 Welcome to the e2e Presidio evaluation toolkit. This project contains two main components: 
 - A series of notebook labs for Presidio located in the `notebook` folder, 
 - An orchestration project that provides a streamlined end-to-end pipeline for generating sample data from the original dataset and evaluating PII detection of different off-the-shelf models, such as Hugging Face transformers and Azure AI Language, in both the original and generated datasets. This project uses Azure Machine Learning to track and manage different versions of the data and is orchestrated by a Github Action pipeline.
+![architecture](/docs/images/e2e%20evaluation%20architecture%20diagram.png)
 
 # Project structure
 This accelerator provides a modular end-to-end approach for evaluating different PII detection models. The project directory structure is as follows:
