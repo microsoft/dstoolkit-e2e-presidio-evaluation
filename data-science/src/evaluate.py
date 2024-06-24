@@ -23,7 +23,7 @@ from presidio_evaluator.evaluation import Evaluator
 from presidio_evaluator.models import PresidioAnalyzerWrapper
 from presidio_analyzer import AnalyzerEngine, RecognizerRegistry
 
-from _config import _ner_model_config
+from _config import _ner_model_config_data_sample2 as _ner_model_config
 from addition_reg.transformer_recognizer import TransformersRecognizer
 from experiment_tracking.experiment_tracker import LocalExperimentTracker
 from plotter import Plotter
@@ -103,6 +103,11 @@ def evaluate_experiment(
     experiment = LocalExperimentTracker(experiment_dir, experiment_name)
     # Run evalutation
     evaluator = Evaluator(model=wrapper)
+    # dataset = Evaluator.align_entity_types(
+    #     deepcopy(evaluation_data), entities_mapping=PresidioAnalyzerWrapper.presidio_entities_map
+    # )
+    print(evaluation_data[132].tags)
+    print(evaluation_data[133].tags)
     evaluation_results = evaluator.evaluate_all(evaluation_data)
     results = evaluator.calculate_score(evaluation_results, beta=beta)
     end_time = time.time()
@@ -168,7 +173,6 @@ def plot_result(df_result):
     ax.set_xticklabels(df_result["model_name"])
     ax.grid(axis="y", alpha=0.5)
     mlflow.log_figure(fig.figure, "compare_performance.png")
-
 
 def data_analysis(input_data: List[InputSample], title) -> pd.DataFrame():
     """Pure analysis of raw data
