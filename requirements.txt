@@ -1,4 +1,5 @@
 pandas
+jupyter
 presidio_analyzer
 presidio_anonymizer
 presidio-evaluator

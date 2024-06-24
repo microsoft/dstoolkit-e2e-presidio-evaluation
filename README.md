@@ -25,7 +25,7 @@ This accelerator provides a modular end-to-end approach for evaluating different
 - `README.md`: This file, which provides an overview and instructions for the project.
 
 # Get started
-- For the Presidio labs, please refer to the detailed instructions in the [Presidio Labs Setup Walkthrough](docs/presidio_labs_setup_walkthrough.md).
+- For the Presidio labs, please refer to the detailed instructions in the [Presidio Labs Setup Walkthrough](notebooks/lab_getstarted.md).
 - For the end-to-end evaluation pipeline, follow the detailed instructions in the [Evaluation Pipeline Setup Walkthrough](docs/evaluation_pipeline_setup_walkthrough.md).
 
 ## Contributing
