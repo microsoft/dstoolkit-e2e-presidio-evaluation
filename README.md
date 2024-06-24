@@ -1,31 +1,33 @@
-# E2E PII evaluation in AzureML demo
+# E2E Presidio evaluation toolkit.
 
-Welcome to the e2e Presidio evaluation toolkit. This project seamlessly integrates with Presidio, providing a streamlined end-to-end pipeline for generating sample data from the original dataset and evaluating PII detection of different off-the-shelf models (such as Presidio and Azure Document Intelligence) in both the original and generated datasets. This project uses Azure Machine Learning to track and manage different versions of the data and is orchestrated by a Github Action pipeline.
+Welcome to the e2e Presidio evaluation toolkit. This project contains two main components: 
+- A series of notebook labs for Presidio located in the `notebook` folder, 
+- An orchestration project that provides a streamlined end-to-end pipeline for generating sample data from the original dataset and evaluating PII detection of different off-the-shelf models, such as Hugging Face transformers and Azure AI Language, in both the original and generated datasets. This project uses Azure Machine Learning to track and manage different versions of the data and is orchestrated by a Github Action pipeline.
 
 # Project structure
 This accelerator provides a modular end-to-end approach for evaluating different PII detection models. The project directory structure is as follows:
 
-- `data_samples/sample_set1`: Contains the sample input data for the project.
-  - `input_samples.json`: The sample input data file.
-- `data-science/`: Data science code and defined python environment for PII evaluation 
-  - `evironment/`: Predefined conda environment file used for project
-  - `src/`: python source code for the project.
-    -`_config`:
-    -`addition_reg`:
-    -`data_generator`:
-    -`experiment_tracking/`:
-- `mlops/`: all the yml file (CLI v2) to orchestrate evaluation process
-  - `components/`: this is the component directory which contains the 
-  - `data/`: predefined dataset in yml file
-  - `environments/`: 
-  - `evaluation_pipeline.yml`: the defined machine learning pipeline in yaml file
-- `README.md`: This file.
+- `data_samples`: Contains the sample input data for the project.
+- `data-science/`: Contains the data science code and defined Python environment for PII evaluation.
+  - `evironment/`: Contains the predefined Conda environment file used for the project.
+  - `src/`: Contains the Python source code for the project.
+    -`_config`: Configuration files for the project.
+    -`addition_reg`: Additional regular expressions used in the project.
+    -`data_generator`: Code related to synthetic data generation.
+    -`experiment_tracking/`: Code related to tracking and managing experiments.
+- `mlops/`: Contains all the YAML files (CLI v2) to orchestrate the evaluation process.
+  - `components/`: Contains the individual components of the MLOps pipeline. 
+  - `data/`: Contains predefined datasets configuration for MLOps pipeline.
+  - `environments/`: Contains environment configuration files for the MLOps pipeline.
+  - `evaluation_pipeline.yml`: The defined machine learning pipeline in a YAML file.
+-`notebooks`: A series of notebook labs for Presidio
+- `README.md`: This file, which provides an overview and instructions for the project.
 
 # Get started
-This project is supported to run in both local and Azure ML environment. All pipelines are orchestrated by GitHub Action. Follow the walkthrough [here](docs/setup_walkthrough.md) for detailed instructions.
+- For the Presidio labs, please refer to the detailed instructions in the [Presidio Labs Setup Walkthrough](docs/presidio_labs_setup_walkthrough.md).
+- For the end-to-end evaluation pipeline, follow the detailed instructions in the [Evaluation Pipeline Setup Walkthrough](docs/evaluation_pipeline_setup_walkthrough.md).
 
 ## Contributing
-
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.

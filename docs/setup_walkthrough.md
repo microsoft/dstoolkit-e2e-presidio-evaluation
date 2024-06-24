@@ -1,6 +1,7 @@
 # Introduction
 This walkthrough aims to set up your own evaluation process as quickly and easily as possible. 
 ## Local run
+
 ## Run in Azure Machine Learning
 ### 1. Prerequis
 1. An Azure subscription. If you don't have an Azure subscription, create a free account before you begin.
