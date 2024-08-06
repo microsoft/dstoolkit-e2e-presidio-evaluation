@@ -171,7 +171,7 @@ class DataGenerator:
             fake.add_provider(provider)
         # Gererate fake data
         fake_records = data_generator.generate_fake_data(
-            templates=all_templates, n_samples=5
+            templates=all_templates, n_samples=self.number_of_samples
         )
         fake_records = list(fake_records)
         # fake_records_modified = self.update_entity_types(fake_records,
