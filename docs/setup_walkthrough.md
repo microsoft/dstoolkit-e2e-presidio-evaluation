@@ -32,3 +32,14 @@ You will get output similar to below:
 > `}`
 
 Copy all of this output, braces included
+
+## Run in local environment
+### 1. Prerequis
+
+conda create --name presidio-eval python=3.9
+conda activate presido-eval
+python -m pip install -r requirements.txt
+
+python data-science/src/augment_samples.py --raw-data data --number-samples 100 --output-path output
+
+python data-science/src/evaluate.py --raw-data data --raw-file-name synth_dataset_v2.json --evaluation-output output --experiment-name Presidio
