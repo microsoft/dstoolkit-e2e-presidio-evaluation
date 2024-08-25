@@ -2,7 +2,8 @@
 # Licensed under the MIT License.
 
 
-
+# Dictionary containing the configuration entity mapping for the dataset entities with the Presidio model entities
+# Key: Dataset entity, Value: Presidio entity
 PRESIDIO_CONFIGURATION = {
     'DATASET_TO_PRESIDIO_MAPPING': {"DATE": "DATE_TIME",
                                     "DOCTOR": "PERSON",
