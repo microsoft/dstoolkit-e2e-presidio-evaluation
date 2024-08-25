@@ -4,6 +4,7 @@
 
 
 # Mapping between the dataset entities and the Faker provider names
+# Key: Dataset entity, Value: Faker provider name
 DATASET_TO_FAKER ={"PERSON":"name",
 "LOCATION":"address",
 "PHONE_NUMBER":"phone_number", 
@@ -27,6 +28,7 @@ DATASET_TO_FAKER ={"PERSON":"name",
 "LOCATION-OTHER":"address",
 "FAX":"phone_number"}
 
+# Key: Faker provider name, Value: Presidio entity
 FAKER_TO_PRESIDIO_TRANSLATION = {
     "name": "PERSON",
     "ip_address": "IP_ADDRESS",
