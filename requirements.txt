@@ -1,5 +1,9 @@
 pandas
 jupyter
+mlflow
+transformers
+kaleido==0.1.0post1
+torchvision~=0.15.2
 presidio_analyzer
 presidio_anonymizer
 presidio-evaluator
